@@ -1,3 +1,4 @@
+mongod
 data
 node_modules
 .env
