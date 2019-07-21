@@ -2,8 +2,7 @@ let passport = require("passport"),
 	express = require("express");
 	router  = express.Router();
 
-let campgroundRoutes = require("../routes/campgrounds"),
-	User = require("../models/user");
+let User = require("../models/user");
 
 
 //SIGN UP
@@ -28,6 +27,12 @@ router.post("/register", function(req, res){
 			});
 		}
 	});
+});
+
+
+// SHOW LANDING PAGE
+router.get("/", function(req, res){
+	res.render("home");
 });
 
 //LOGIN
