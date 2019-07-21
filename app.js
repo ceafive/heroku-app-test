@@ -15,11 +15,12 @@ let express = require("express"),
 	app = express();
 
 dotenv.config();
-var url = process.env.MONGODB_URL;
+var URL = process.env.MONGODB_URL;
+console.log(URL);
 
 
 // CONNECT APP TO MONGODB DB
-mongoose.connect(url, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
+mongoose.connect(URL, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
 	console.log("Connected to DB");
 }).catch(err => {
 	console.log("ERROR:", err.message);
