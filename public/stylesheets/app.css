@@ -1,0 +1,24 @@
+
+form {
+	width: 30%;
+}
+
+/* .lead {
+	text-align: justify;
+} */
+
+.textwidth {
+	width: 95%;
+	margin: 5px auto;
+	word-break: break-all;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+}
+
+.btn-info,
+.btn-danger {
+	margin: 0 1% 0 1%;
+}
