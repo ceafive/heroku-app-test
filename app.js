@@ -8,20 +8,20 @@ let express = require("express"),
 	passport = require("passport"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
-	// dotenv = require('dotenv');
+	dotenv = require('dotenv');
 	// crypto = require("crypto"),
 	// nodemailer = require("nodemailer"),
 	// async = require("async");
 	app = express();
 
-// dotenv.config();
-// var url = process.env.MONGODB_URI;
+dotenv.config();
+var url = process.env.MONGODB_URL || process.env.MONGODB_TEST;
 
-// CONNECT mongoDB DATABASE TO LOCAL SERVER
+// // CONNECT mongoDB DATABASE TO LOCAL SERVER
 // mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true, useFindAndModify: false});
 
 // CONNECT APP TO MONGODB ATLAS
-mongoose.connect("mongodb+srv://ceafive:fatality88@cluster0-fsrqm.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
+mongoose.connect(url, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
 	console.log("Connected to DB");
 }).catch(err => {
 	console.log("ERROR:", err.message);
@@ -67,9 +67,7 @@ app.use(function(req, res, next){
 app.use(campgroundRoutes);
 app.use(authRoutes);
 
-
-
 // PORT LISTEN
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(3000, function(){
 	console.log("hey, i am listening");
 });

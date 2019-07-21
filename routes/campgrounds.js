@@ -1,7 +1,6 @@
-let express = require("express");
-	router  = express.Router();
-
-let Campground = require("../models/campgroundschema");
+let express = require("express"),
+	router  = express.Router(),
+	Campground = require("../models/campgroundschema");
 
 // SHOW ALL CAMPGROUNDS
 router.get("/campgrounds", function(req, res){

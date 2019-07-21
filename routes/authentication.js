@@ -4,6 +4,10 @@ let passport = require("passport"),
 
 let User = require("../models/user");
 
+// SHOW LANDING PAGE
+router.get("/", function(req, res){
+	res.render("home");
+});
 
 //SIGN UP
 router.get("/register", function(req, res){
@@ -27,12 +31,6 @@ router.post("/register", function(req, res){
 			});
 		}
 	});
-});
-
-
-// SHOW LANDING PAGE
-router.get("/", function(req, res){
-	res.render("home");
 });
 
 //LOGIN
