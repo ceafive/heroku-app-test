@@ -8,23 +8,24 @@ let express = require("express"),
 	passport = require("passport"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
-	dotenv = require('dotenv');
+	// dotenv = require('dotenv');
 	// crypto = require("crypto"),
 	// nodemailer = require("nodemailer"),
 	// async = require("async");
 	app = express();
 
-dotenv.config();
-var URL = process.env.MONGODB_URL;
-console.log(URL);
+// // dotenv.config();
+// var URL = process.env.MONGODB_URL;
 
+// CONNECT mongoDB DATABASE TO EXPRESS SERVER
+mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true, useFindAndModify: false});
 
-// CONNECT APP TO MONGODB DB
-mongoose.connect(URL, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
-	console.log("Connected to DB");
-}).catch(err => {
-	console.log("ERROR:", err.message);
-});
+// // CONNECT APP TO MONGODB DB
+// mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
+// 	console.log("Connected to DB");
+// }).catch(err => {
+// 	console.log("ERROR:", err.message);
+// });
 
 // REQUIRE CAMPGROUND SCHEMA
 let Campground = require("./models/campgroundschema");
@@ -66,7 +67,8 @@ app.use(function(req, res, next){
 app.use(campgroundRoutes);
 app.use(authRoutes);
 
-// PORT LISTEN
+//PORT LISTEN
 app.listen(3000, function(){
 	console.log("hey, i am listening");
 });
+
