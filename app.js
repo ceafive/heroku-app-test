@@ -15,12 +15,10 @@ let express = require("express"),
 	app = express();
 
 dotenv.config();
-var url = process.env.MONGODB_URL || process.env.MONGODB_TEST;
+var url = process.env.MONGODB_URL;
 
-// // CONNECT mongoDB DATABASE TO LOCAL SERVER
-// mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true, useFindAndModify: false});
 
-// CONNECT APP TO MONGODB ATLAS
+// CONNECT APP TO MONGODB DB
 mongoose.connect(url, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
 	console.log("Connected to DB");
 }).catch(err => {
