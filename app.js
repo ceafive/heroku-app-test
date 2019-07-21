@@ -8,13 +8,20 @@ let express = require("express"),
 	passport = require("passport"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
+	dotenv = require('dotenv');
 	// crypto = require("crypto"),
 	// nodemailer = require("nodemailer"),
 	// async = require("async");
 	app = express();
 
-// CONNECT mongoDB DATABASE TO EXPRESS SERVER
-mongoose.connect("mongodb+srv://ceafive:fatality88@cluster0-fsrqm.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
+dotenv.config();
+var url = process.env.MONGODB_URI;
+
+// CONNECT mongoDB DATABASE TO LOCAL SERVER
+// mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true, useFindAndModify: false});
+
+// CONNECT APP TO MONGODB ATLAS
+mongoose.connect(url, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
 	console.log("Connected to DB");
 }).catch(err => {
 	console.log("ERROR:", err.message);
