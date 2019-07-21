@@ -14,7 +14,11 @@ let express = require("express"),
 	app = express();
 
 // CONNECT mongoDB DATABASE TO EXPRESS SERVER
-mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true, useFindAndModify: false});
+mongoose.connect("mongodb+srv://ceafive:fatality88@cluster0-fsrqm.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
+	console.log("Connected to DB");
+}).catch(err => {
+	console.log("ERROR:", err.message);
+});
 
 // REQUIRE CAMPGROUND SCHEMA
 let Campground = require("./models/campgroundschema");
