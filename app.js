@@ -8,9 +8,9 @@ let express = require("express"),
 	passport = require("passport"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
-	crypto = require("crypto"),
-	nodemailer = require("nodemailer"),
-	async = require("async");
+	// crypto = require("crypto"),
+	// nodemailer = require("nodemailer"),
+	// async = require("async");
 	app = express();
 
 // CONNECT mongoDB DATABASE TO EXPRESS SERVER
