@@ -65,6 +65,12 @@ app.use(function(req, res, next){
 app.use(campgroundRoutes);
 app.use(authRoutes);
 
+// SHOW LANDING PAGE
+app.get("/", function(req, res){
+	res.render("home");
+});
+
+
 // PORT LISTEN
 app.listen(3000, function(){
 	console.log("hey, i am listening");

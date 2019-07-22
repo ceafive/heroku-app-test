@@ -4,10 +4,6 @@ let passport = require("passport"),
 
 let User = require("../models/user");
 
-// SHOW LANDING PAGE
-router.get("/", function(req, res){
-	res.render("home");
-});
 
 //SIGN UP
 router.get("/register", function(req, res){
