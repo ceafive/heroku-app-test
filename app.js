@@ -67,6 +67,6 @@ app.use(campgroundRoutes);
 app.use(authRoutes);
 
 // PORT LISTEN
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
 	console.log("hey, i am listening");
 });
