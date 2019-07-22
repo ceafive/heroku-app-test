@@ -19,7 +19,7 @@ var URL = process.env.MONGODB_URL || 'mongodb://localhost/yelp_camp';
 
 
 // CONNECT APP TO MONGODB DB
-mongoose.connect("mongodb+srv://ceafive:fatality88@cluster0-fsrqm.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
+mongoose.connect(URL, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
 	console.log("Connected to DB");
 }).catch(err => {
 	console.log("ERROR:", err.message);
@@ -36,6 +36,7 @@ let campgroundRoutes = require("./routes/campgrounds"),
 	authRoutes = require("./routes/authentication");
 
 app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
@@ -64,12 +65,6 @@ app.use(function(req, res, next){
 
 app.use(campgroundRoutes);
 app.use(authRoutes);
-
-// SHOW LANDING PAGE
-app.get("/", function(req, res){
-	res.render("home");
-});
-
 
 // PORT LISTEN
 app.listen(3000, function(){
