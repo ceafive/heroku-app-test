@@ -1,5 +1,5 @@
 let passport = require("passport"),
-	express = require("express");
+	express = require("express"),
 	router  = express.Router();
 
 let User = require("../models/user");
