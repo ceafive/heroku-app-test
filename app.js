@@ -8,14 +8,14 @@ let express = require("express"),
 	passport = require("passport"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
-	dotenv = require('dotenv');
+	// dotenv = require('dotenv');
 	// crypto = require("crypto"),
 	// nodemailer = require("nodemailer"),
 	// async = require("async");
 	app = express();
 
-dotenv.config();
-var URL = process.env.MONGODB_URL || 'mongodb://localhost/yelp_camp';
+// dotenv.config();
+var URL = process.env.DATABASE_URL;
 
 
 // CONNECT APP TO MONGODB DB
