@@ -8,18 +8,19 @@ let express = require("express"),
 	passport = require("passport"),
 	LocalStrategy = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
-	// dotenv = require('dotenv');
+	dotenv = require('dotenv');
 	// crypto = require("crypto"),
 	// nodemailer = require("nodemailer"),
 	// async = require("async");
 	app = express();
 
-// dotenv.config();
-// var URL = process.env.DATABASE_URL;
+dotenv.config();
+var URL = process.env.DATABASE_URL;
+// var URL = process.env.LOCALDB_URL;
 
 
 // CONNECT APP TO MONGODB DB
-mongoose.connect("mongodb+srv://ceafive:fatality88@cluster0-fsrqm.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
+mongoose.connect(URL, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true}).then(() => {
 	console.log("Connected to DB");
 }).catch(err => {
 	console.log("ERROR:", err.message);
@@ -36,7 +37,6 @@ let campgroundRoutes = require("./routes/campgrounds"),
 	authRoutes = require("./routes/authentication");
 
 app.set("view engine", "ejs");
-app.set("views", __dirname + "/views");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
@@ -68,5 +68,5 @@ app.use(authRoutes);
 
 // PORT LISTEN
 app.listen(process.env.PORT || 3000, function(){
-	console.log("hey, i am listening");
+	console.log("PORT CONNECTED");
 });
